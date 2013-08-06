@@ -48,10 +48,11 @@ build() {
 }
 
 package() {
-  cd $srcdir
-  install -Dm644 Book.bin "$pkgdir/usr/share/stockfish/book.bin"
+  cd $_gitname
+  install -Dm644 ../Book.bin "$pkgdir/usr/share/stockfish/book.bin"
+  install -Dm644 Copying.txt "$pkgdir/usr/share/licenses/stockfish/COPYING"
 
-  cd $_gitname/src
+  cd src
   make PREFIX="$pkgdir/usr" install
 }
 
